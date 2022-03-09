@@ -10,7 +10,6 @@ A Decentralized Voting Application for EVM compatible blockchains (ethereum, pol
   <li>Closing the election after the predermined voting period </li>
 </ul>
 
-<br/>
 <h3>Main functions: </h3>
 <ul>
   <li>Allow user to vote only once for a choosen candidate</li>
