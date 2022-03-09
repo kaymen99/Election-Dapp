@@ -17,3 +17,5 @@ A Decentralized Voting Application built for EVM compatible blockchains (ethereu
   <li>Give a complete list of all candidates with their data (id, name, votes count) </li>
 </ul>
 
+All tests for the functions in Election smart contract can be found in tests folder
+
