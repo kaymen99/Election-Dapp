@@ -1,5 +1,5 @@
 # Election-Dapp
-A Decentralized Voting Application for EVM compatible blockchains (ethereum, polygon, avalanche,...)
+A Decentralized Voting Application built for EVM compatible blockchains (ethereum, polygon, avalanche,...)
 
 <h2>Dapp Features: </h2>
 
