@@ -1,0 +1,15 @@
+{
+  "contracts": {
+    "Election": "f767fb570fe18b1ac5dd07772efd7495f97249d1"
+  },
+  "tests": {
+    "tests/test_election.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "......",
+      "sha1": "2599dd9a4ab44d51499a82c8852722f2677fb9b3",
+      "txhash": []
+    }
+  },
+  "tx": {}
+}
