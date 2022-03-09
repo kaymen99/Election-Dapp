@@ -1,9 +1,9 @@
 # Election-Dapp
 A Decentralized Voting Application for EVM compatible blockchains (ethereum, polygon, avalanche,...)
 
-<h3>Main Features: </h3>
+<h2>Dapp Features: </h2>
 
-<h5>Administation functions: </h5>
+<h3>Administation functions: </h3>
 <ul>
   <li>Adding new candidates</li>
   <li>Opening the voting for a giver duration </li>
@@ -11,7 +11,7 @@ A Decentralized Voting Application for EVM compatible blockchains (ethereum, pol
 </ul>
 
 <br/>
-<h5>Main functions: </h5>
+<h3>Main functions: </h3>
 <ul>
   <li>Allow user to vote only once for a choosen candidate</li>
   <li>Determine the winner based on highest votes count </li>
