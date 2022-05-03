@@ -1,5 +1,4 @@
-from curses import start_color
-import time
+import time, brownie
 from brownie import Election
 from scripts.helper_scripts import get_account
 
@@ -89,6 +88,26 @@ def test_close_election():
     close_tx.wait(1)
 
     assert election_contract.electionCurrentState() == 2
+
+def test_close_election_before_deadline():
+    admin = get_account()
+    election_contract = Election.deploy({"from": admin})
+
+    add_candidate_tx = election_contract.addCandidate("Candidate 1", {"from": admin})
+    add_candidate_tx.wait(1)
+
+    # duration = 300 s
+    duration = 300
+    open_tx = election_contract.openVoting(duration, {"from": admin})
+    open_tx.wait(1)
+
+    # wait 20s
+    time.sleep(20)
+    
+    # make sure that the contract throw an error when trying to close the election before deadline
+    with brownie.reverts("Vote duration not ended"):
+        close_tx = election_contract.endVoting({"from": admin})
+        close_tx.wait(1)
 
 def test_get_result():
     admin = get_account()
