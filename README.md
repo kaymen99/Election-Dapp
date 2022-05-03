@@ -42,6 +42,16 @@ A Decentralized Voting Application built for EVM compatible blockchains (ethereu
    git clone https://github.com/Aymen1001/Election-Dapp.git
    cd Election-Dapp
    ```
+### How to deploy:
+
+To deploy the Election contract on development network, run the command :
+   ```sh
+   brownie run scripts/deploy_election.py
+   ```
+To deploy on real network/testnets, run the command :
+   ```sh
+   brownie run scripts/deploy_election.py --network=<network name>
+   ```
 
 ### Testing:
 
