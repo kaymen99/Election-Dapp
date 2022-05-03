@@ -7,8 +7,7 @@ contract Election {
     // VARIABLES
 
     address public admin;
-    uint256 public totalNumberOfVoters = 0;
-    uint256 public numberOfCandidates = 0;
+    uint256 public totalNumberOfVoters;
 
     ElectionState public electionCurrentState;
     uint256 public voteEndTimestamp;
@@ -38,7 +37,7 @@ contract Election {
 
     event VoteOpened(uint256 timestamp);
     event VoteEnded(uint256 timestamp);
-    event CandidateAdded(uint256 id, string name);
+    event CandidateAdded(uint256 id, string name, uint256 timestamp);
 
     //--------------------------------------------------------------------
     // MODIFIERS
@@ -68,7 +67,7 @@ contract Election {
         public
         isElectionState(ElectionState.OPEN)
     {
-        require(_candidateId < numberOfCandidates);
+        require(_candidateId < candidatesList.length);
         require(!votes[msg.sender].hasVoted, "Already voted");
         votes[msg.sender] = Vote(true, _candidateId);
         candidatesList[_candidateId].votesCount++;
@@ -94,16 +93,17 @@ contract Election {
         isElectionState(ElectionState.ENDED)
         returns (Candidate memory)
     {
+        Candidate[] memory _candidates = candidatesList;
         uint256 maxCount = 0;
         uint256 winnerId = 0;
 
-        for (uint256 i = 0; i < numberOfCandidates; i++) {
-            if (candidatesList[i].votesCount > maxCount) {
-                maxCount = candidatesList[i].votesCount;
+        for (uint256 i = 0; i < _candidates.length; i++) {
+            if (_candidates[i].votesCount > maxCount) {
+                maxCount = _candidates[i].votesCount;
                 winnerId = i;
             }
         }
-        return candidatesList[winnerId];
+        return _candidates[winnerId];
     }
 
     //--------------------------------------------------------------------
@@ -129,14 +129,17 @@ contract Election {
         onlyAdmin
         isElectionState(ElectionState.NOTOPENYET)
     {
-        uint256 newId = numberOfCandidates;
+        uint256 newId = candidatesList.length;
         candidatesList.push(Candidate(uint8(newId), _name, 0));
-        numberOfCandidates++;
 
-        emit CandidateAdded(newId, _name);
+        emit CandidateAdded(newId, _name, block.timestamp);
     }
 
-    function endVoting() external onlyAdmin {
+    function endVoting()
+        external
+        onlyAdmin
+        isElectionState(ElectionState.OPEN)
+    {
         require(block.timestamp >= voteEndTimestamp, "Vote duration not ended");
         electionCurrentState = ElectionState.ENDED;
 
