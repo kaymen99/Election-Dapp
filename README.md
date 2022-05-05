@@ -36,6 +36,10 @@ A Decentralized Voting Application built for EVM compatible blockchains (ethereu
     ```sh
     pip install eth-brownie
     ```
+   Install [ganache-cli](https://www.npmjs.com/package/ganache-cli): 
+   ```sh
+    npm install -g ganache-cli
+    ```
    
 2. Clone the repo:
    ```sh
