@@ -43,7 +43,7 @@ A Decentralized Voting Application built for EVM compatible blockchains (ethereu
    
 2. Clone the repo:
    ```sh
-   git clone https://github.com/Aymen1001/Election-Dapp.git
+   git clone https://github.com/kaymen99/Election-Dapp.git
    cd Election-Dapp
    ```
 ### How to deploy:
